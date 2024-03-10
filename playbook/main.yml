@@ -1,0 +1,7 @@
+- hosts: webservers
+  become: true
+  tasks:
+    - name: create user (ansible-worker)
+      user:
+        name: ansible-worker
+      tags: [user]
