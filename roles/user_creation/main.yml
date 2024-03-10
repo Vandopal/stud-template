@@ -1,0 +1,14 @@
+- name: create_user(ansible-worker)
+  ansible.builtin.user:
+    name: ansible-worker
+    state: present
+    shell: /bin/bash
+    groups: www-data
+  tags: user_creation
+
+- name: settings_user
+  ansible.builtin.file:
+    path: "/home/ansible-worker"
+    owner: www-data
+    group: ansible-worker
+  tags: user_creation

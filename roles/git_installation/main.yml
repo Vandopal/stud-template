@@ -1,0 +1,22 @@
+- name: git_install
+  ansible.builtin.apt:
+    name: git
+    state: present
+  tags:
+    - git_installation
+
+- name: copy_sshkey_private
+  ansible.builtin.copy:
+    src: "./ssh_keys/id_rsa"
+    dest: "~/.ssh/id_rsa"
+    mode: '0600'
+  tags:
+    - git_installation
+
+- name: copy_sshkey_public
+  ansible.builtin.copy:
+    src: "./ssh_keys/id_rsa.pub"
+    dest: "~/.ssh/id_rsa.pub"
+    mode: '0644'
+  tags:
+    - git_installation

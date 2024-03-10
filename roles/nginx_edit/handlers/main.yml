@@ -1,0 +1,5 @@
+- name: nginx_restart
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+  tags: nginx_edit

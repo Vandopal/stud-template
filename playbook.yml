@@ -1,0 +1,8 @@
+- name: config_server
+  hosts: webservers
+  become: yes
+  roles:
+    - user_creation
+    - git_installation
+    - git_clone
+    - nginx_edit

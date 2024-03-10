@@ -1,0 +1,35 @@
+- name: nginx_install
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+  tags: nginx_edit
+
+- name: copy_index.html
+  ansible.builtin.copy:
+    src: "./roles/nginx_edit/templates/index.html"
+    dest: "/home/ansible-worker/www/stud-template/index.html"
+    mode: '0644'
+  tags: nginx_edit
+
+- name: set_premission_www-data_group
+  ansible.builtin.file:
+    path: "/home/ansible-worker/www"
+    owner: www-data
+    group: ansible-worker
+    mode: "0755"
+    recurse: yes
+  tags: nginx_edit
+
+- name: create_config_nginx
+  ansible.builtin.template:
+    src: "./roles/nginx_edit/templates/ansible.iphilka.ru.conf"
+    dest: "/etc/nginx/sites-available/ansible.iphilka.ru.conf"
+  notify: Restart Nginx
+  tags: nginx_edit
+
+- name: enable_nginx_site
+  ansible.builtin.file:
+    src: "/etc/nginx/sites-available/ansible.iphilka.ru.conf"
+    dest: "/etc/nginx/sites-enabled/ansible.iphilka.ru.conf"
+    state: link
+  tags: nginx_edit

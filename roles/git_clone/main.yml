@@ -1,0 +1,7 @@
+- name: clone_repo
+  ansible.builtin.git:
+    repo: "https://github.com/iphilka/stud-template.git"
+    dest: "/home/ansible-worker/www/stud-template"
+    update: no
+    clone: yes
+  tags: git_clone

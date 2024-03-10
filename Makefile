@@ -1,5 +1,5 @@
 ping: 
-	@ansible all -i inventory.ini -m ping
+	@ansible all -i hosts.ini -m ping
 
 start:
-	@ansible-playbook playbook/main.yml -i inventory.ini
+	@ansible-playbook playbook.yml -i hosts.ini

@@ -1,0 +1,7 @@
+ansible-playbook playbook.yml -i inventory.ini --tags user_creation
+
+ansible-playbook playbook.yml -i inventory.ini --tags git_installation
+
+ansible-playbook playbook.yml -i inventory.ini --tags git_clone
+
+ansible-playbook playbook.yml -i inventory.ini --tags nginx_edit
